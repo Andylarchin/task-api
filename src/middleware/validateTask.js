@@ -1,4 +1,4 @@
-import { body } from 'express-validator';
+import { body, query } from 'express-validator';
 import { checkValidationResults } from './handleValidationErrors.js';
 
 export const validateTask = [
@@ -15,6 +15,20 @@ export const validateTask = [
     .optional()
     .isBoolean()
     .withMessage('completed must be true or false'),
+
+  checkValidationResults,
+];
+
+// Validates the optional ?completed=true|false query parameter on GET /tasks.
+// Any other value (e.g. ?completed=invalid, or a repeated parameter)
+// results in a 400 Bad Request.
+export const validateTaskQuery = [
+  query('completed')
+    .optional()
+    .custom(
+      (value) => typeof value === 'string' && ['true', 'false'].includes(value),
+    )
+    .withMessage('completed query parameter must be true or false'),
 
   checkValidationResults,
 ];
