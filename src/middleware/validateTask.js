@@ -19,9 +19,6 @@ export const validateTask = [
   checkValidationResults,
 ];
 
-// Validates the optional ?completed=true|false query parameter on GET /tasks.
-// Any other value (e.g. ?completed=invalid, or a repeated parameter)
-// results in a 400 Bad Request.
 export const validateTaskQuery = [
   query('completed')
     .optional()

@@ -3,8 +3,6 @@ import * as taskService from '../services/taskService.js';
 export async function getTasks(req, res, next) {
   const { completed } = req.query;
 
-  // Build an optional filter from the validated query parameter.
-  // When ?completed is omitted, no filter is applied and all tasks are returned.
   const filters = {};
   if (completed !== undefined) {
     filters.completed = completed === 'true';

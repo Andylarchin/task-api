@@ -1,7 +1,5 @@
 import prisma from '../config/db.js';
 
-// Find all tasks, optionally filtered by completion status.
-// filters: { completed?: boolean }
 export async function findAll(filters = {}) {
   const where = {};
 

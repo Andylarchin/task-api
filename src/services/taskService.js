@@ -1,6 +1,5 @@
 import * as taskRepository from '../repositories/taskRepo.js';
 
-// filters: { completed?: boolean }
 export async function getAllTasks(filters = {}) {
   return taskRepository.findAll(filters);
 }
